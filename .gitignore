@@ -1,0 +1,6 @@
+node_modules/
+dist/
+/node_modlules
+npm-debug.log
+.DS_Store
+.env
