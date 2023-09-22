@@ -17,11 +17,11 @@ Sale.init(
       allowNull: false,
     },
     sale_item: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       reference: {
         model: "item",
-        key: "item_name",
+        key: "id",
       },
     },
     sale_employee: {

@@ -12,7 +12,7 @@ Employee.hasMany(Sale, {
 
 // sales belong to an employee
 Sale.belongsTo(Employee, {
-  foreign_key: "sale_employee",
+  foreign_key: "employee_id",
 });
 
 //items have many sales

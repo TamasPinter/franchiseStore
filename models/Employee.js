@@ -24,7 +24,7 @@ Employee.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    sales: {
+    sales_made: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
