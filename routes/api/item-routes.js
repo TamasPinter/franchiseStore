@@ -5,7 +5,7 @@ const { Item, Sale, Employee } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const itemData = await Item.findAll({
-      include: [{ model: Employee, through: Sale, as: "item_employees" }],
+      include: [{ model: Employee, model: Sale }],
     });
     res.status(200).json(itemData);
   } catch (err) {
@@ -16,8 +16,8 @@ router.get("/", async (req, res) => {
 // Get one item
 router.get("/:id", async (req, res) => {
   try {
-    const itemData = await Item.findByPk({
-      include: [{ model: Employee, through: Sale, as: "item_employees" }],
+    const itemData = await Item.findByPk(req.params.id, {
+      include: { model: Sale },
     });
     if (!itemData) {
       res.status(400).json({ message: "No item found!" });

@@ -5,7 +5,7 @@ const { Sale, Employee, Item } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const saleData = await Sale.findAll({
-      include: [{ model: Employee }, { model: Item }],
+      include: [{ model: Employee, as: "employee" }, { model: Item }],
     });
     res.status(200).json(saleData);
   } catch (err) {
@@ -16,8 +16,8 @@ router.get("/", async (req, res) => {
 //Get one sale
 router.get("/:id", async (req, res) => {
   try {
-    const saleData = await Sale.findByPk({
-      include: [{ model: Employee }, { model: Item }],
+    const saleData = await Sale.findByPk(req.params.id, {
+      include: [{ all: true }],
     });
     if (!saleData) {
       res.status(404).json({ message: "No sale found!" });
